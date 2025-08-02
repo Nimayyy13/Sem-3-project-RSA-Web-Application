@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Side Assistance (RSA) - Student Project</title>
+    <meta name="description" content="Road Side Assistance services project by 2nd year IT students. Emergency fuel delivery and vehicle breakdown support.">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-car-crash"></i>
+                RSA Project
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#fuel-delivery">Fuel Delivery</a></li>
+                <li><a href="#breakdown">Breakdown</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Road Side Assistance Project</h1>
+            <p>This is a student project for 2nd year Information Technology students. Emergency fuel delivery and vehicle breakdown support system.</p>
+            <div class="hero-buttons">
+                <a href="#fuel-delivery" class="btn btn-primary">
+                    <i class="fas fa-gas-pump"></i>
+                    Order Fuel
+                </a>
+                <a href="#breakdown" class="btn btn-secondary">
+                    <i class="fas fa-tools"></i>
+                    Breakdown Help
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Basic roadside assistance services for our project demonstration</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h3>Fuel Delivery</h3>
+                    <p>Emergency fuel delivery service. We deliver petrol, diesel, and CNG to your location.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Breakdown Support</h3>
+                    <p>Basic vehicle breakdown assistance including towing and minor repairs.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support for emergency situations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fuel Delivery Section -->
+    <section id="fuel-delivery" class="fuel-delivery">
+        <div class="fuel-content">
+            <div class="fuel-text">
+                <h2>Fuel Delivery Service</h2>
+                <p>Need fuel? Our delivery service is available 24/7. Check our current fuel prices below.</p>
+                
+                <!-- Fuel Pricing Table -->
+                <div class="fuel-pricing">
+                    <h3>Current Fuel Prices (per liter)</h3>
+                    <div class="pricing-table">
+                        <div class="pricing-row header">
+                            <div class="fuel-type">Fuel Type</div>
+                            <div class="price">Price (₹)</div>
+                            <div class="delivery-fee">Delivery Fee</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="fuel-type">Petrol</div>
+                            <div class="price">₹96.72</div>
+                            <div class="delivery-fee">₹50</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="fuel-type">Diesel</div>
+                            <div class="price">₹89.62</div>
+                            <div class="delivery-fee">₹50</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="fuel-type">CNG</div>
+                            <div class="price">₹73.59</div>
+                            <div class="delivery-fee">₹75</div>
+                        </div>
+                    </div>
+                    <p class="pricing-note">* Prices are updated daily based on market rates</p>
+                </div>
+
+                <div class="fuel-features">
+                    <div class="fuel-feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Delivery time: 30-45 minutes</span>
+                    </div>
+                    <div class="fuel-feature">
+                        <i class="fas fa-gas-pump"></i>
+                        <span>Available: Petrol, Diesel, CNG</span>
+                    </div>
+                    <div class="fuel-feature">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Online payment or Cash on Delivery</span>
+                    </div>
+                </div>
+                <button class="fuel-cta" onclick="openFuelModal()">
+                    <i class="fas fa-gas-pump"></i>
+                    Order Fuel Now
+                </button>
+            </div>
+            <div class="fuel-visual">
+                <div class="emergency-contact">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Emergency: 1800-RSA-HELP</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breakdown Assistance Section -->
+    <section id="breakdown" class="breakdown">
+        <div class="breakdown-content">
+            <div class="breakdown-text">
+                <h2>Vehicle Breakdown Assistance</h2>
+                <p>If your vehicle breaks down, we can help with basic assistance services.</p>
+                <div class="breakdown-services">
+                    <div class="breakdown-service">
+                        <h4><i class="fas fa-wrench"></i>Basic Repairs</h4>
+                        <p>Minor repairs and maintenance at your location.</p>
+                    </div>
+                    <div class="breakdown-service">
+                        <h4><i class="fas fa-truck"></i>Towing Service</h4>
+                        <p>Towing to nearby service centers.</p>
+                    </div>
+                    <div class="breakdown-service">
+                        <h4><i class="fas fa-battery-full"></i>Battery Jump Start</h4>
+                        <p>Quick battery jump start service.</p>
+                    </div>
+                    <div class="breakdown-service">
+                        <h4><i class="fas fa-tire"></i>Tire Change</h4>
+                        <p>Emergency tire replacement service.</p>
+                    </div>
+                </div>
+                <button class="breakdown-cta" onclick="openBreakdownModal()">
+                    <i class="fas fa-tools"></i>
+                    Request Help
+                </button>
+            </div>
+            <div class="breakdown-visual">
+                <div class="emergency-contact">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>24/7 Support</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <p>Get in touch with our support team for any questions</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Emergency Hotline</h3>
+                    <p>1800-RSA-HELP<br>Available 24/7</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Support</h3>
+                    <p>support@rsaproject.com<br>Response within 4 hours</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Service Areas</h3>
+                    <p>Local city coverage<br>Limited areas</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Full Name</label>
+                        <input type="text" id="contactName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address</label>
+                        <input type="email" id="contactEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone">Phone Number</label>
+                        <input type="tel" id="contactPhone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" rows="5" required placeholder="Tell us how we can help you..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RSA Project</h3>
+                <p>This is a student project for 2nd year Information Technology students. Basic roadside assistance services.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#services">Services</a></p>
+                <p><a href="#fuel-delivery">Fuel Delivery</a></p>
+                <p><a href="#breakdown">Breakdown Help</a></p>
+                <p><a href="#contact">Contact Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Emergency Contact</h3>
+                <p><i class="fas fa-phone"></i> 1800-RSA-HELP</p>
+                <p><i class="fas fa-envelope"></i> emergency@rsaproject.com</p>
+                <p><i class="fas fa-clock"></i> 24/7 Available</p>
+            </div>
+            <div class="footer-section">
+                <h3>Student Info</h3>
+                <p>2nd Year IT Students</p>
+                <p>Information Technology</p>
+                <p>Engineering College</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 RSA Project. Student project for academic purposes.</p>
+        </div>
+    </footer>
+
+    <!-- Fuel Delivery Modal -->
+    <div id="fuelModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-gas-pump"></i> Fuel Delivery Order</h3>
+                <button class="close-btn" onclick="closeFuelModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="fuelForm">
+                <div class="form-group">
+                    <label for="fuelName">Full Name *</label>
+                    <input type="text" id="fuelName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="fuelPhone">Phone Number *</label>
+                    <input type="tel" id="fuelPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="fuelLocation">Current Location *</label>
+                    <input type="text" id="fuelLocation" name="location" placeholder="Street address or landmark" required>
+                </div>
+                <div class="form-group">
+                    <label for="fuelType">Fuel Type *</label>
+                    <select id="fuelType" name="fuelType" required onchange="calculateTotal()">
+                        <option value="">Select fuel type</option>
+                        <option value="petrol" data-price="96.72">Petrol - ₹96.72/liter</option>
+                        <option value="diesel" data-price="89.62">Diesel - ₹89.62/liter</option>
+                        <option value="cng" data-price="73.59">CNG - ₹73.59/liter</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fuelAmount">Amount Needed (Liters) *</label>
+                    <input type="number" id="fuelAmount" name="amount" min="1" max="100" required onchange="calculateTotal()">
+                </div>
+                <div class="form-group">
+                    <label for="fuelVehicle">Vehicle Details</label>
+                    <input type="text" id="fuelVehicle" name="vehicle" placeholder="Make, model, color">
+                </div>
+                
+                <!-- Price Calculation Display -->
+                <div class="price-calculation">
+                    <div class="price-row">
+                        <span>Fuel Cost:</span>
+                        <span id="fuelCost">₹0.00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Delivery Fee:</span>
+                        <span id="deliveryFee">₹0.00</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total Amount:</span>
+                        <span id="totalAmount">₹0.00</span>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method *</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Select payment method</option>
+                        <option value="online">Online Payment (UPI/Card)</option>
+                        <option value="cod">Cash on Delivery (COD)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-gas-pump"></i>
+                    Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-credit-card"></i> Payment</h3>
+                <button class="close-btn" onclick="closePaymentModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="payment-content">
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div id="orderSummary"></div>
+                </div>
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardName">Cardholder Name</label>
+                        <input type="text" id="cardName" name="cardName" placeholder="John Doe">
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-lock"></i>
+                        Pay Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breakdown Help Modal -->
+    <div id="breakdownModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-tools"></i> Breakdown Assistance</h3>
+                <button class="close-btn" onclick="closeBreakdownModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="breakdownForm">
+                <div class="form-group">
+                    <label for="breakdownName">Full Name *</label>
+                    <input type="text" id="breakdownName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="breakdownPhone">Phone Number *</label>
+                    <input type="tel" id="breakdownPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="breakdownLocation">Current Location *</label>
+                    <input type="text" id="breakdownLocation" name="location" placeholder="Street address or landmark" required>
+                </div>
+                <div class="form-group">
+                    <label for="breakdownIssue">Issue Description *</label>
+                    <textarea id="breakdownIssue" name="issue" rows="4" placeholder="Describe the problem with your vehicle..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="breakdownVehicle">Vehicle Details</label>
+                    <input type="text" id="breakdownVehicle" name="vehicle" placeholder="Make, model, year, color">
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-tools"></i>
+                    Request Help
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+</html> 
