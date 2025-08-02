@@ -243,6 +243,117 @@ function closePaymentModal() {
     }
 }
 
+// Calculate delivery time based on fuel type and amount
+function calculateDeliveryTime(fuelType, amount) {
+    let baseTime = 30; // Base delivery time in minutes
+    
+    // Adjust time based on fuel type
+    if (fuelType === 'cng') {
+        baseTime += 15; // CNG takes longer to deliver
+    }
+    
+    // Adjust time based on amount
+    if (amount > 50) {
+        baseTime += 10; // Large orders take longer
+    } else if (amount > 20) {
+        baseTime += 5; // Medium orders take slightly longer
+    }
+    
+    return baseTime;
+}
+
+// Generate order ID
+function generateOrderId() {
+    const timestamp = Date.now();
+    const random = Math.floor(Math.random() * 1000);
+    return `RSA${timestamp}${random}`;
+}
+
+// Show payment confirmation modal
+function showPaymentConfirmation(orderData, orderId, deliveryTime) {
+    // Create confirmation modal
+    const confirmationModal = document.createElement('div');
+    confirmationModal.className = 'modal';
+    confirmationModal.id = 'confirmationModal';
+    
+    const currentTime = new Date();
+    const deliveryTimeDate = new Date(currentTime.getTime() + (deliveryTime * 60000)); // Add delivery time in minutes
+    
+    confirmationModal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header" style="background: #28a745;">
+                <h3><i class="fas fa-check-circle"></i> Payment Successful!</h3>
+                <button class="close-btn" onclick="closeConfirmationModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="payment-content">
+                <div class="success-message">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>Your fuel order has been placed successfully!</h4>
+                    <p>Thank you for choosing RSA Project for your fuel delivery.</p>
+                </div>
+                
+                <div class="order-confirmation">
+                    <h5>Order Details</h5>
+                    <div class="confirmation-details">
+                        <p><strong>Order ID:</strong> ${orderId}</p>
+                        <p><strong>Fuel Type:</strong> ${orderData.fuelType}</p>
+                        <p><strong>Amount:</strong> ${orderData.amount} liters</p>
+                        <p><strong>Total Amount:</strong> ${orderData.total}</p>
+                        <p><strong>Payment Method:</strong> Online Payment</p>
+                        <p><strong>Payment Status:</strong> <span style="color: #28a745;">✓ Paid</span></p>
+                    </div>
+                </div>
+                
+                <div class="delivery-info">
+                    <h5>Delivery Information</h5>
+                    <div class="delivery-details">
+                        <p><strong>Estimated Delivery Time:</strong> ${deliveryTime} minutes</p>
+                        <p><strong>Expected Delivery:</strong> ${deliveryTimeDate.toLocaleTimeString()}</p>
+                        <p><strong>Delivery Location:</strong> ${orderData.location}</p>
+                        <p><strong>Contact Number:</strong> ${orderData.phone}</p>
+                    </div>
+                </div>
+                
+                <div class="next-steps">
+                    <h5>What happens next?</h5>
+                    <ul>
+                        <li>Our delivery team will contact you within 5 minutes</li>
+                        <li>You'll receive SMS confirmation with tracking details</li>
+                        <li>Fuel will be delivered to your specified location</li>
+                        <li>Payment receipt will be provided upon delivery</li>
+                    </ul>
+                </div>
+                
+                <div class="emergency-contact">
+                    <p><strong>Need immediate assistance?</strong></p>
+                    <p>Call our 24/7 support: <strong>1800-RSA-HELP</strong></p>
+                </div>
+                
+                <button class="submit-btn" onclick="closeConfirmationModal()" style="background: #28a745;">
+                    <i class="fas fa-home"></i>
+                    Return to Home
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(confirmationModal);
+    confirmationModal.style.display = 'block';
+}
+
+// Close confirmation modal
+function closeConfirmationModal() {
+    const modal = document.getElementById('confirmationModal');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = 'auto';
+    }
+}
+
 // Handle fuel request
 function handleFuelRequest(form) {
     const formData = new FormData(form);
@@ -339,11 +450,48 @@ function handlePayment(form) {
     showMessage('Processing payment...', 'success');
     
     setTimeout(() => {
-        showMessage('Payment successful! Your fuel order has been placed.', 'success');
+        // Get order data from the order summary
+        const orderSummary = document.getElementById('orderSummary');
+        const orderText = orderSummary.textContent;
+        
+        // Extract order details (simplified parsing)
+        const fuelTypeMatch = orderText.match(/Fuel Type:\s*([^\n]+)/);
+        const amountMatch = orderText.match(/Amount:\s*(\d+)/);
+        const totalMatch = orderText.match(/Total:\s*₹([\d.]+)/);
+        
+        const orderData = {
+            fuelType: fuelTypeMatch ? fuelTypeMatch[1].trim() : 'Unknown',
+            amount: amountMatch ? amountMatch[1] : '0',
+            total: totalMatch ? `₹${totalMatch[1]}` : '₹0.00',
+            location: document.getElementById('fuelLocation').value,
+            phone: document.getElementById('fuelPhone').value,
+            name: document.getElementById('fuelName').value
+        };
+        
+        // Calculate delivery time
+        const deliveryTime = calculateDeliveryTime(orderData.fuelType, parseInt(orderData.amount));
+        
+        // Generate order ID
+        const orderId = generateOrderId();
+        
+        // Close payment modal
         closePaymentModal();
+        
+        // Show payment confirmation
+        showPaymentConfirmation(orderData, orderId, deliveryTime);
+        
         // Reset fuel form
         document.getElementById('fuelForm').reset();
         calculateTotal();
+        
+        // Save to localStorage for demo purposes
+        saveToLocalStorage({
+            ...orderData,
+            orderId: orderId,
+            deliveryTime: deliveryTime,
+            paymentMethod: 'online',
+            status: 'confirmed'
+        });
     }, 2000);
 }
 
@@ -352,10 +500,16 @@ function processOrder(data, paymentType) {
     showMessage('Processing your order...', 'success');
     
     setTimeout(() => {
+        // Calculate delivery time
+        const deliveryTime = calculateDeliveryTime(data.fuelType, parseInt(data.amount));
+        
+        // Generate order ID
+        const orderId = generateOrderId();
+        
         if (paymentType === 'cod') {
-            showMessage('Order placed successfully! Pay ₹' + data.total.replace('₹', '') + ' on delivery.', 'success');
+            showMessage(`Order placed successfully! Order ID: ${orderId}. Pay ₹${data.total.replace('₹', '')} on delivery. Estimated delivery: ${deliveryTime} minutes.`, 'success');
         } else {
-            showMessage('Order placed successfully! Payment completed.', 'success');
+            showMessage(`Order placed successfully! Order ID: ${orderId}. Payment completed. Estimated delivery: ${deliveryTime} minutes.`, 'success');
         }
         
         closeFuelModal();
@@ -364,7 +518,12 @@ function processOrder(data, paymentType) {
         calculateTotal();
         
         // Save to localStorage for demo purposes
-        saveToLocalStorage(data);
+        saveToLocalStorage({
+            ...data,
+            orderId: orderId,
+            deliveryTime: deliveryTime,
+            status: 'confirmed'
+        });
     }, 1500);
 }
 
@@ -373,7 +532,7 @@ function processBreakdownRequest(data) {
     showMessage('Processing your breakdown request...', 'success');
     
     setTimeout(() => {
-        showMessage('Breakdown assistance request submitted! We will contact you shortly.', 'success');
+        showMessage('Breakdown assistance request submitted! We will contact you shortly. Estimated response time: 10-15 minutes.', 'success');
         closeBreakdownModal();
         
         // Reset form
@@ -389,7 +548,7 @@ function processContactRequest(data) {
     showMessage('Sending your message...', 'success');
     
     setTimeout(() => {
-        showMessage('Message sent successfully! We will get back to you soon.', 'success');
+        showMessage('Message sent successfully! We will get back to you within 4 hours.', 'success');
         
         // Reset form
         document.getElementById('contactForm').reset();
@@ -439,6 +598,7 @@ window.addEventListener('click', function(e) {
     const fuelModal = document.getElementById('fuelModal');
     const breakdownModal = document.getElementById('breakdownModal');
     const paymentModal = document.getElementById('paymentModal');
+    const confirmationModal = document.getElementById('confirmationModal');
 
     if (e.target === fuelModal) {
         closeFuelModal();
@@ -448,6 +608,9 @@ window.addEventListener('click', function(e) {
     }
     if (e.target === paymentModal) {
         closePaymentModal();
+    }
+    if (e.target === confirmationModal) {
+        closeConfirmationModal();
     }
 });
 
