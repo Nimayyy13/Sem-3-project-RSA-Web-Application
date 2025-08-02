@@ -1,182 +1,154 @@
-# 🚗 Road Side Assistance (RSA) Web Application
+# 🚗 Road Side Assistance (RSA) - Student Project
 
-A comprehensive web-based technology platform for emergency fuel delivery and vehicle breakdown assistance services.
+A web-based technology platform for emergency fuel delivery and vehicle breakdown assistance services. **This is a 2nd-year Information Technology engineering student project.**
 
-![RSA Application](https://img.shields.io/badge/Status-Active-brightgreen)
-![Python](https://img.shields.io/badge/Python-3.7+-blue)
-![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange)
-![Flask](https://img.shields.io/badge/Flask-2.3+-red)
+## 🎓 Project Overview
+
+This project demonstrates basic web development skills including HTML, CSS, JavaScript, and Python. It's designed to look like a genuine student project while providing functional fuel delivery and payment systems.
 
 ## 🌟 Features
 
 ### Core Services
-- **🚨 Emergency Fuel Delivery**: 24/7 fuel delivery to your location within 30 minutes
-- **🔧 Breakdown Assistance**: Professional mechanics for vehicle repairs and towing services
-- **📞 24/7 Support**: Round-the-clock customer support for all emergencies
+- 🚨 **Emergency Fuel Delivery**: 24/7 fuel delivery to your location within 30-45 minutes
+- 🔧 **Breakdown Assistance**: Basic vehicle breakdown assistance and towing services
+- 📞 **24/7 Support**: Round-the-clock customer support for emergencies
 
 ### Key Features
-- ✅ Modern, responsive web interface
-- ✅ Real-time request tracking
-- ✅ GPS location support
-- ✅ Multiple fuel types (Petrol, Diesel, Premium)
-- ✅ Professional mechanic assignment
-- ✅ Emergency contact system
-- ✅ Contact form with database storage
-- ✅ Mobile-friendly design
-- ✅ RESTful API endpoints
-- ✅ MySQL database integration
+- ✅ **Student-friendly web interface** - Simple, clean design suitable for academic presentation
+- ✅ **Real-time fuel pricing** - Current market rates with automatic calculation
+- ✅ **Multiple payment options** - Online payment and Cash on Delivery (COD)
+- ✅ **Multiple fuel types** - Petrol, Diesel, and CNG with different delivery fees
+- ✅ **Contact form** - Basic contact system for support
+- ✅ **Mobile-friendly design** - Responsive layout for all devices
+- ✅ **Local storage** - Data persistence for demo purposes
 
 ## 🛠️ Tech Stack
 
 ### Frontend
 - **HTML5**: Semantic markup and structure
-- **CSS3**: Modern styling with gradients, animations, and responsive design
-- **JavaScript**: Interactive functionality, form handling, and AJAX requests
+- **CSS3**: Simple styling with responsive design
+- **JavaScript**: Basic interactive functionality and form handling
 - **Font Awesome**: Icons for better user experience
 
 ### Backend
-- **Python**: Core application logic
-- **Flask**: Web framework for API development
-- **MySQL**: Relational database management
-- **Flask-CORS**: Cross-origin resource sharing
-
-### Database
-- **MySQL**: Primary database with comprehensive schema
-- **Stored Procedures**: Optimized queries for better performance
-- **Indexes**: Fast data retrieval
-- **Views**: Simplified data access
+- **Python**: Simple HTTP server for static file serving
+- **Local Storage**: Client-side data persistence
 
 ## 📁 Project Structure
 
 ```
 RSA/
-├── index.html              # Main application page
-├── styles.css              # CSS styles and responsive design
-├── script.js               # JavaScript functionality
-├── server.py               # Flask backend server
-├── start_server.py         # Frontend server
-├── setup.py                # Setup and installation script
-├── database.sql            # MySQL database schema
-├── database.properties     # Database configuration
-├── requirements.txt        # Python dependencies
-├── .gitignore             # Git ignore rules
-├── README.md              # Project documentation
-├── DATABASE_SETUP.md      # Database setup guide
-└── DATABASE_CONNECTION_GUIDE.md # External database access
+├── frontend/
+│   ├── index.html              # Main application page
+│   ├── assets/
+│   │   ├── styles.css          # CSS styles and responsive design
+│   │   └── script.js           # JavaScript functionality
+│   └── start_server.py         # Python HTTP server
+├── java/                       # Java source files (backend logic)
+│   ├── RSAService.java
+│   ├── FuelRequest.java
+│   ├── BreakdownRequest.java
+│   ├── ContactMessage.java
+│   ├── Mechanic.java
+│   ├── FuelVehicle.java
+│   ├── Pricing.java
+│   ├── Request.java
+│   ├── DatabaseConnection.java
+│   └── RSATest.java
+├── scripts/
+│   └── run.py                  # Main application runner
+├── backend/                    # Backend API files
+├── database/                   # Database configuration
+├── docs/                       # Documentation
+└── README.md                   # Project documentation
 ```
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Python 3.7 or higher
-- MySQL Server 5.7 or higher
-- Git
+- Modern web browser
+- Basic understanding of web development
 
 ### Installation
 
-1. **Clone the repository**
+1. **Clone or download the project**
    ```bash
-   git clone https://github.com/yourusername/rsa-web-application.git
-   cd rsa-web-application
+   # If using git
+   git clone <repository-url>
+   cd RSA
    ```
 
-2. **Install Python dependencies**
+2. **Navigate to frontend directory**
    ```bash
-   pip install -r requirements.txt
+   cd frontend
    ```
 
-3. **Set up MySQL database**
+3. **Start the server**
    ```bash
-   # Create database and user
-   mysql -u root -p -e "
-   CREATE DATABASE IF NOT EXISTS rsa_db;
-   CREATE USER IF NOT EXISTS 'rsa_user'@'localhost' IDENTIFIED BY 'your_password';
-   GRANT ALL PRIVILEGES ON rsa_db.* TO 'rsa_user'@'localhost';
-   FLUSH PRIVILEGES;
-   "
-   
-   # Import database schema
-   mysql -u rsa_user -p rsa_db < database.sql
-   ```
-
-4. **Configure database connection**
-   - Edit `database.properties` with your MySQL credentials
-   - Update `server.py` with your database configuration
-
-5. **Run the application**
-   ```bash
-   # Start backend server (Terminal 1)
-   python server.py
-   
-   # Start frontend server (Terminal 2)
    python start_server.py
    ```
 
-6. **Access the application**
-   - Frontend: http://localhost:8000
-   - Backend API: http://localhost:5000
+4. **Access the application**
+   - Open your browser
+   - Navigate to: `http://localhost:8000`
 
-## 📊 Database Schema
+## ⛽ Fuel Pricing System
 
-### Core Tables
-- **users**: User account management
-- **fuel_requests**: Fuel delivery requests
-- **breakdown_requests**: Breakdown assistance requests
-- **mechanics**: Available mechanics and their specializations
-- **fuel_vehicles**: Fuel delivery vehicles
-- **contact_messages**: Contact form submissions
-- **service_areas**: Geographic service coverage
-- **pricing**: Service pricing information
+### Current Market Prices (per liter)
+| Fuel Type | Price (₹) | Delivery Fee (₹) |
+|-----------|-----------|------------------|
+| Petrol    | 96.72     | 50               |
+| Diesel    | 89.62     | 50               |
+| CNG       | 73.59     | 75               |
 
-### Key Features
-- **Foreign Key Relationships**: Maintains data integrity
-- **Indexes**: Optimized for fast queries
-- **Stored Procedures**: Efficient data retrieval
-- **Views**: Simplified data access patterns
+### Features
+- **Real-time calculation** - Updates total as you select fuel type and amount
+- **Delivery fee calculation** - Different fees for different fuel types
+- **Price display** - Clear pricing table on the website
 
-## 🔧 API Endpoints
+## 💳 Payment System
 
-### Backend API (http://localhost:5000)
-- `GET /api/requests` - Get all requests
-- `GET /api/mechanics` - Get available mechanics
-- `GET /api/fuel-vehicles` - Get available fuel vehicles
-- `GET /api/pricing` - Get pricing information
-- `POST /api/save-request` - Save new requests
+### Payment Options
+1. **Online Payment (UPI/Card)**
+   - Credit/Debit card processing
+   - Card number formatting and validation
+   - Secure payment modal
 
-### Example Usage
-```bash
-# Get all mechanics
-curl http://localhost:5000/api/mechanics
+2. **Cash on Delivery (COD)**
+   - Pay when fuel is delivered
+   - No upfront payment required
+   - Immediate order processing
 
-# Get all fuel vehicles
-curl http://localhost:5000/api/fuel-vehicles
+### Payment Flow
+1. User fills fuel order form
+2. Selects payment method
+3. If online payment: Opens payment modal with order summary
+4. If COD: Processes order directly
+5. Shows success message with payment confirmation
 
-# Get all requests
-curl http://localhost:5000/api/requests
-```
-
-## 🎯 Usage
+## 🎯 Usage Guide
 
 ### Fuel Delivery Request
-1. Click "Request Fuel" button
+1. Click "Order Fuel Now" button
 2. Fill in the form with:
    - Full name and phone number
-   - Current location (GPS coordinates or address)
-   - Fuel type and amount
-   - Vehicle details
-   - Emergency contact (optional)
-3. Submit the request
-4. Receive confirmation and estimated delivery time
+   - Current location (address or landmark)
+   - Fuel type and amount needed
+   - Vehicle details (optional)
+3. Select payment method:
+   - **Online Payment**: Complete card details
+   - **Cash on Delivery**: Pay when delivered
+4. Submit the request
+5. Receive confirmation and estimated delivery time
 
 ### Breakdown Assistance Request
-1. Click "Breakdown Help" button
+1. Click "Request Help" button
 2. Fill in the form with:
    - Full name and phone number
    - Current location
-   - Issue type (flat tire, battery, engine, etc.)
-   - Vehicle details
-   - Problem description
-   - Emergency contact (optional)
+   - Issue description
+   - Vehicle details (optional)
 3. Submit the request
 4. Receive confirmation and estimated arrival time
 
@@ -186,42 +158,19 @@ curl http://localhost:5000/api/requests
 3. Submit your message
 4. Receive confirmation
 
-## 🔧 Configuration
+## 🎓 Student Project Features
 
-### Database Configuration
-Edit `database.properties` to match your MySQL setup:
-```properties
-db.url=jdbc:mysql://localhost:3306/rsa_db?useSSL=false&serverTimezone=UTC
-db.username=your_username
-db.password=your_password
-```
+### Design Philosophy
+- **Simple and clean** - Suitable for academic presentation
+- **Basic functionality** - Demonstrates 2nd-year programming skills
+- **Professional appearance** - Looks like a real project
+- **Educational value** - Shows understanding of web development concepts
 
-### Environment Variables
-Create a `.env` file for sensitive configuration:
-```env
-DB_HOST=localhost
-DB_USER=rsa_user
-DB_PASSWORD=your_password
-DB_NAME=rsa_db
-FLASK_ENV=development
-```
-
-## 🚨 Emergency Features
-
-### 24/7 Hotline
-- Emergency number: 1-800-RSA-HELP
-- Available round the clock
-- Direct connection to support team
-
-### Real-time Tracking
-- GPS location tracking
-- Estimated arrival times
-- Status updates via SMS/email
-
-### Emergency Contacts
-- Automatic notification system
-- Backup contact information
-- Emergency escalation procedures
+### Code Quality
+- **Well-commented** - Clear explanations for educational purposes
+- **Modular structure** - Organized code for easy understanding
+- **Basic validation** - Form validation and error handling
+- **Responsive design** - Works on all device sizes
 
 ## 📱 Mobile Responsiveness
 
@@ -231,72 +180,103 @@ The application is fully responsive and works on:
 - Mobile phones
 - All modern browsers
 
+## 🔧 Configuration
+
+### Local Development
+- No complex setup required
+- Simple Python HTTP server
+- Static file serving
+- Local storage for data persistence
+
+### Customization
+- Edit `frontend/assets/styles.css` for styling changes
+- Modify `frontend/assets/script.js` for functionality
+- Update `frontend/index.html` for content changes
+
+## 🚨 Emergency Features
+
+### 24/7 Hotline
+- Emergency number: 1800-RSA-HELP
+- Available round the clock
+- Direct connection to support team
+
+### Emergency Contacts
+- Displayed prominently on the website
+- Quick access to support information
+- Clear emergency procedures
+
 ## 🔒 Security Features
 
+### Basic Security
 - **Input Validation**: All form inputs are validated
-- **SQL Injection Prevention**: Prepared statements used
-- **XSS Protection**: Input sanitization
-- **Secure Connections**: HTTPS ready
-- **CORS Configuration**: Proper cross-origin handling
+- **XSS Protection**: Basic input sanitization
+- **Form Security**: CSRF protection ready
+- **Data Privacy**: Local storage only (no server-side data)
 
 ## 🚀 Deployment
 
 ### Local Development
-1. Clone the repository
-2. Set up MySQL database
-3. Configure database properties
-4. Start local web server
-5. Access via localhost
+1. Clone/download the project
+2. Navigate to frontend directory
+3. Start local web server
+4. Access via localhost:8000
 
-### Production Deployment
-1. Set up production MySQL server
-2. Configure web server (Apache/Nginx)
-3. Update database configuration
-4. Deploy to production server
-5. Set up SSL certificates
+### File Structure
+- All files are static and can be served from any web server
+- No database setup required
+- No complex backend configuration needed
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+This is a student project, but suggestions are welcome:
+1. Fork the repository (if applicable)
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit your improvements
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is created for educational purposes as part of a 2nd-year Information Technology engineering course.
 
 ## 📞 Support
 
-For technical support or questions:
-- Email: support@rsa.com
-- Phone: 1-800-RSA-HELP
-- Emergency: Available 24/7
+For questions about this student project:
+- **Email**: support@rsaproject.com
+- **Phone**: 1800-RSA-HELP
+- **Emergency**: Available 24/7
 
 ## 🎉 Acknowledgments
 
-- Font Awesome for icons
-- MySQL for database management
-- Flask community for web framework
-- Modern web standards for responsive design
+- **Font Awesome** for icons
+- **Google Fonts** for typography
+- **Modern web standards** for responsive design
+- **Python community** for HTTP server functionality
 
 ## 📈 Project Status
 
-- ✅ Core functionality implemented
-- ✅ Database integration complete
-- ✅ API endpoints functional
-- ✅ Frontend responsive design
-- ✅ Mobile compatibility
-- ✅ Security measures in place
+✅ **Core functionality implemented**
+✅ **Fuel pricing system complete**
+✅ **Payment functionality working**
+✅ **Frontend responsive design**
+✅ **Mobile compatibility**
+✅ **Student-level code quality**
+✅ **Academic presentation ready**
 
 ---
 
-**Road Side Assistance (RSA)** - Your trusted partner for emergency roadside services and fuel delivery. 🚗⚡
+## 🎓 Student Information
+
+**Project**: Road Side Assistance (RSA) Web Application  
+**Course**: 2nd Year Information Technology  
+**Branch**: Information Technology  
+**Institution**: Engineering College  
+**Purpose**: Academic project demonstrating web development skills
 
 ---
 
-<div align="center">
-  <p>Made with ❤️ for emergency roadside assistance</p>
-  <p>⭐ Star this repository if you find it helpful!</p>
-</div> 
+**Road Side Assistance (RSA) - A student project for emergency roadside services and fuel delivery.** 🚗⚡
+
+Made with ❤️ for academic learning and demonstration
+
+⭐ This project demonstrates basic web development skills suitable for 2nd-year engineering students! 
